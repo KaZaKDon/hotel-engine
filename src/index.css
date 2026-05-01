@@ -1,0 +1,27 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, Arial, sans-serif;
+  background: var(--color-bg);
+  color: var(--color-text);
+}
+.app {
+  min-height: 100vh;
+  padding: 32px;
+}
+
+.hotel-card {
+  max-width: 420px;
+  padding: 20px;
+  margin-top: 20px;
+  border: 1px solid #374151;
+  border-radius: 16px;
+  background: #1f2937;
+}
+
+.hotel-card h3 {
+  margin-top: 0;
+}

@@ -1,0 +1,118 @@
+.room-plan-box {
+    width: min(600px, 90vw);
+    /* главный параметр */
+    margin: 0 auto;
+    border-radius: var(--radius-xl);
+    background: #ffffff;
+    box-shadow: var(--shadow-md);
+    overflow: hidden;
+    transform: scale(1.02);
+}
+
+.room-floor {
+    fill: #fff7ed;
+}
+
+.room-wall {
+    fill: transparent;
+    stroke: #334155;
+    stroke-width: 16;
+}
+
+.room-door-gap {
+    stroke: #fff7ed;
+    stroke-width: 20;
+    stroke-linecap: round;
+}
+
+.room-door-arc {
+    fill: none;
+    stroke: #94a3b8;
+    stroke-width: 3;
+    stroke-dasharray: 6 6;
+}
+
+.room-window {
+    stroke: #38bdf8;
+    stroke-width: 8;
+    stroke-linecap: round;
+}
+
+.room-label {
+    fill: #64748b;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.furniture-item {
+    stroke: #0f172a;
+    stroke-width: 2;
+}
+
+.furniture-bed {
+    fill: #bae6fd;
+}
+
+.bed-pillow {
+    fill: #ffffff;
+    stroke: #0284c7;
+    stroke-width: 1;
+}
+
+.furniture-nightstand {
+    fill: #fde68a;
+}
+
+.furniture-wardrobe {
+    fill: #fed7aa;
+}
+
+.furniture-fridge {
+    fill: #e0f2fe;
+}
+
+.furniture-table {
+    fill: #bbf7d0;
+}
+
+.furniture-tv {
+    fill: #1e293b;
+}
+
+.furniture-default {
+    fill: #e2e8f0;
+}
+
+.furniture-label {
+    fill: #0f172a;
+    font-size: 12px;
+    font-weight: 800;
+    pointer-events: none;
+}
+
+.furniture-tv+.furniture-label,
+.furniture-tv~.furniture-label {
+    fill: #ffffff;
+}
+
+.furniture-tv_stand {
+    fill: #e9d5ff;
+}
+
+/* курсор */
+.bed-clickable {
+    cursor: pointer;
+}
+
+/* hover */
+.bed-clickable:hover rect {
+    stroke: #0284c7;
+    stroke-width: 3;
+}
+
+/* выбранная кровать */
+.bed-active {
+    fill: #7dd3fc !important;
+    stroke: #0369a1;
+    stroke-width: 3;
+}

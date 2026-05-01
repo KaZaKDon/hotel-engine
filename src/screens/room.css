@@ -1,0 +1,329 @@
+.room-screen {
+    min-height: 100vh;
+    padding: 32px;
+    background: var(--color-bg);
+}
+
+.room-content {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 32px;
+}
+
+.room-media {
+    display: grid;
+    gap: 16px;
+}
+
+.room-title {
+    margin: 0 0 8px;
+    text-align: center;
+    font-size: 36px;
+}
+
+.room-image,
+.room-video {
+    height: 220px;
+    border-radius: var(--radius-lg);
+    background: var(--color-bg-soft);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-text-muted);
+}
+
+.room-info h1 {
+    margin: 0 0 12px;
+    font-size: 32px;
+}
+
+.price {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.room-actions {
+    margin-top: 20px;
+}
+
+.room-layout {
+    max-width: 1300px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: minmax(0, 2fr) minmax(420px, 1fr);
+    gap: 40px;
+    align-items: start;
+}
+
+/* левая часть */
+.room-left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.room-left h2 {
+    margin: 0;
+    text-align: center;
+}
+
+/* правая часть */
+.room-right {
+    position: sticky;
+    top: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+/* схема */
+.room-plan {
+    height: 260px;
+    background: var(--color-bg-soft);
+    border-radius: var(--radius-lg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+/* карусель */
+.carousel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+}
+
+.carousel-image {
+    width: 240px;
+    height: 120px;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+}
+
+.carousel-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.carousel button {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 1px solid var(--color-border);
+    background: var(--color-bg-card);
+    cursor: pointer;
+}
+
+.video-button {
+    align-self: center;
+    padding: 12px 20px;
+    border-radius: 999px;
+    border: none;
+    background: var(--color-primary);
+    color: white;
+    cursor: pointer;
+}
+
+/* модалка */
+.modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    width: 700px;
+}
+
+.modal video {
+    width: 100%;
+}
+
+.booking-panel {
+    width: 100%;
+    max-width: 460px;
+    margin: 8px auto 0;
+    padding: 28px;
+    border-radius: var(--radius-lg);
+    background: var(--color-bg-card);
+    box-shadow: var(--shadow-md);
+}
+
+.booking-panel h2 {
+    margin: 0 0 16px;
+    font-size: 22px;
+}
+
+.booking-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 14px;
+    margin-bottom: 16px;
+}
+
+.booking-grid label {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    font-size: 13px;
+    color: var(--color-text-muted);
+}
+
+.booking-grid input,
+.booking-grid select {
+    height: 42px;
+    padding: 0 12px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    background: #ffffff;
+    color: var(--color-text);
+}
+
+.booking-summary {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 8px 0;
+    border-top: 1px solid var(--color-border);
+}
+
+.booking-summary span {
+    color: var(--color-text-muted);
+}
+
+.booking-button {
+    width: 100%;
+    margin-top: 16px;
+    border: 0;
+    border-radius: 999px;
+    padding: 14px 24px;
+    background: var(--color-primary);
+    color: #ffffff;
+    font-weight: 800;
+    cursor: pointer;
+}
+
+.booking-button:hover {
+    background: var(--color-primary-hover);
+}
+
+.booking-note {
+    margin: 10px 0 0;
+    color: var(--color-text-muted);
+    font-size: 14px;
+    text-align: center;
+}
+
+.booking-success {
+    margin: 12px 0 0;
+    padding: 10px 12px;
+    border-radius: var(--radius-md);
+    background: #dcfce7;
+    color: #166534;
+    font-size: 14px;
+    text-align: center;
+}
+
+.booking-button:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+}
+
+.booking-modal {
+    position: relative;
+    width: min(460px, calc(100vw - 32px));
+    padding: 28px;
+    border-radius: var(--radius-xl);
+    background: #ffffff;
+    box-shadow: var(--shadow-md);
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.booking-modal h2 {
+    margin: 0 0 4px;
+}
+
+.booking-modal-summary {
+    padding: 12px;
+    border-radius: var(--radius-md);
+    background: #f8fafc;
+    border: 1px solid var(--color-border);
+}
+
+.booking-modal-summary p {
+    margin: 4px 0;
+    color: var(--color-text-muted);
+}
+
+.booking-modal-summary strong {
+    color: var(--color-text);
+}
+
+.booking-modal label {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    color: var(--color-text-muted);
+    font-size: 14px;
+}
+
+.booking-modal input,
+.booking-modal textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    font: inherit;
+    color: var(--color-text);
+    background: #ffffff;
+}
+
+.booking-modal textarea {
+    resize: vertical;
+}
+
+.modal-close {
+    position: absolute;
+    right: 14px;
+    top: 12px;
+    width: 32px;
+    height: 32px;
+    border: 0;
+    border-radius: 50%;
+    background: #f1f5f9;
+    color: var(--color-text);
+    font-size: 22px;
+    line-height: 1;
+    cursor: pointer;
+}
+
+@media (max-width: 720px) {
+    .booking-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 900px) {
+    .room-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .room-right {
+        position: static;
+    }
+
+    .booking-panel {
+        max-width: 600px;
+    }
+}
