@@ -44,7 +44,7 @@ export default function RoomScreen() {
         setImageIndex((current) => (current + 1) % images.length);
     };
 
-    const handleBookingSubmit = (e) => {
+    const handleBookingSubmit = async (e) => {
         e.preventDefault();
 
         const booking = {
@@ -66,16 +66,55 @@ export default function RoomScreen() {
             createdAt: new Date().toISOString(),
         };
 
+        // 👉 Данные под API (то, что ждёт PHP)
+        const payload = {
+            hotel: booking.hotelName,
+            room: booking.roomNumber,
+            bed: booking.roomTitle,
+            name: booking.guestName,
+            phone: booking.guestPhone,
+            checkIn: booking.dateFrom,
+            checkOut: booking.dateTo,
+            meals: booking.foodTariffTitle,
+        };
+
+        let apiSuccess = false;
+
+        try {
+            const res = await fetch("http://127.0.0.1:8000/api/booking/index.php", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(payload),
+            });
+
+            const result = await res.json();
+
+            if (res.ok && result.success) {
+                apiSuccess = true;
+            } else {
+                console.warn("API ответ:", result);
+            }
+        } catch (err) {
+            console.error("Ошибка API:", err);
+        }
+
+        // 👉 fallback (оставляем, если вдруг API упадёт)
         const savedBookings = JSON.parse(localStorage.getItem("bookings") || "[]");
         savedBookings.push(booking);
-
         localStorage.setItem("bookings", JSON.stringify(savedBookings));
 
         setBookingModalOpen(false);
         setGuestName("");
         setGuestPhone("");
         setGuestComment("");
-        setSuccessMessage("Заявка сохранена. Администратор свяжется с вами.");
+
+        if (apiSuccess) {
+            setSuccessMessage("Заявка отправлена. Мы свяжемся с вами.");
+        } else {
+            setSuccessMessage("Заявка сохранена локально. Связь с сервером временно недоступна.");
+        }
 
         console.log("Новая заявка:", booking);
     };

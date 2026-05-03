@@ -17,3 +17,11 @@ export function getFloorByHotelAndNumber(hotelId, number) {
 export function getRoomsByFloorId(floorId) {
     return db.rooms.filter((room) => room.floorId === floorId);
 }
+
+export function getFloorByNumber(hotelId, number) {
+    return getFloorByHotelAndNumber(hotelId, number);
+}
+
+export function getRoomsByFloor(floorId) {
+    return getRoomsByFloorId(floorId);
+}

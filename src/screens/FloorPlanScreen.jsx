@@ -1,91 +1,102 @@
 import { useNavigate, useParams } from "react-router-dom";
-import {
-    getHotelBySlug,
-    getFloorByHotelAndNumber,
-    getRoomsByFloorId,
-} from "../data/selectors";
+import { getFloorByNumber, getHotelBySlug, getRoomsByFloor } from "../data/selectors";
 import "./floor-plan.css";
 
 export default function FloorPlanScreen() {
-    const { hotelSlug, floorNumber } = useParams();
     const navigate = useNavigate();
+    const { hotelSlug, floorNumber } = useParams();
 
     const hotel = getHotelBySlug(hotelSlug);
-    if (!hotel) return <div>Гостиница не найдена</div>;
+    const floor = getFloorByNumber(hotel?.id, Number(floorNumber));
+    const rooms = getRoomsByFloor(floor?.id);
 
-    const floor = getFloorByHotelAndNumber(hotel.id, floorNumber);
-    if (!floor) return <div>Этаж не найден</div>;
-
-    const rooms = getRoomsByFloorId(floor.id);
-
-    if (floor.type === "service") {
+    if (!hotel || !floor) {
         return (
-            <main className="floor-plan-screen">
-                <button className="back-button" onClick={() => navigate(`/hotels/${hotelSlug}/floors`)}>
-                    ← Назад к этажам
+            <main className="screen">
+                <button className="back-button" onClick={() => navigate(-1)}>
+                    ← Назад
                 </button>
-
-                <section className="restaurant-view">
-                    <div>
-                        <p className="eyebrow">{floor.title}</p>
-                        <h1>Ресторан / зона питания</h1>
-                        <p>
-                            На первом этаже расположен ресторан. Здесь можно выбрать питание
-                            при проживании или оставить заявку на бронирование столика.
-                        </p>
-
-                        <button className="primary-button">
-                            Забронировать столик
-                        </button>
-                    </div>
-                </section>
+                <p>Этаж не найден</p>
             </main>
         );
     }
 
-    const oddRooms = rooms.filter((room) => Number(room.number) % 2 !== 0);
-    const evenRooms = rooms.filter((room) => Number(room.number) % 2 === 0);
+    const layoutItems = floor.layout?.items || [];
+    const layoutZones = floor.layout?.zones || [];
+    const layoutFurniture = floor.layout?.furniture || [];
+
+    const handleRoomClick = (item) => {
+        if (item.type !== "room") return;
+
+        const room = rooms.find((roomItem) => roomItem.number === item.number);
+
+        if (!room) return;
+
+        navigate(`/hotels/${hotelSlug}/rooms/${room.number}`);
+    };
+
+    const renderItemLabel = (item) => {
+        if (item.type === "room") return item.number;
+        if (item.type === "stairs") return item.title || "Лестница";
+        return item.title;
+    };
 
     return (
-        <main className="floor-plan-screen">
+        <main className="screen floor-plan-screen">
             <button className="back-button" onClick={() => navigate(`/hotels/${hotelSlug}/floors`)}>
-                ← Назад к этажам
+                ← К этажам
             </button>
 
-            <header className="floor-plan-header">
-                <p className="eyebrow">{hotel.name}</p>
+            <section className="floor-plan-header">
                 <h1>{floor.title}</h1>
-                <p>{floor.description}</p>
-            </header>
+            </section>
 
-            <section className="floor-layout-horizontal">
-                <div className="rooms-row">
-                    {oddRooms.map((room) => (
-                        <button
-                            key={room.id}
-                            className="room-tile-horizontal"
-                            onClick={() =>
-                                navigate(`/hotels/${hotelSlug}/rooms/${room.number}`)
-                            }
-                        >
-                            {room.number}
-                        </button>
-                    ))}
-                </div>
+            <section className={`floor-layout floor-layout-${floor.number}`}>
+                {layoutZones.map((zone) => (
+                    <div
+                        key={zone.id}
+                        className={`floor-zone floor-zone-${zone.type}`}
+                        style={{
+                            left: `${zone.x}%`,
+                            top: `${zone.y}%`,
+                            width: `${zone.w}%`,
+                            height: `${zone.h}%`,
+                        }}
+                    >
+                        <span>{zone.title}</span>
+                    </div>
+                ))}
 
-                <div className="corridor-horizontal">
-                    <span>Коридор</span>
-                    <button className="stairs">Лестница вниз</button>
-                    {floor.number === 3 && <span className="balcony-horizontal">Балконы</span>}
-                </div>
+                {layoutItems.map((item) => (
+                    <button
+                        key={item.id}
+                        type="button"
+                        className={`floor-item floor-item-${item.type}`}
+                        style={{
+                            left: `${item.x}%`,
+                            top: `${item.y}%`,
+                            width: `${item.w}%`,
+                            height: `${item.h}%`,
+                        }}
+                        onClick={() => handleRoomClick(item)}
+                        disabled={item.type !== "room"}
+                    >
+                        {renderItemLabel(item)}
+                    </button>
+                ))}
 
-                <div className="rooms-row">
-                    {evenRooms.map((room) => (
-                        <button key={room.id} className="room-tile-horizontal">
-                            {room.number}
-                        </button>
-                    ))}
-                </div>
+                {layoutFurniture.map((item) => (
+                    <div
+                        key={item.id}
+                        className={`floor-furniture floor-furniture-${item.type}`}
+                        style={{
+                            left: `${item.x}%`,
+                            top: `${item.y}%`,
+                        }}
+                    >
+                        {item.title}
+                    </div>
+                ))}
             </section>
         </main>
     );

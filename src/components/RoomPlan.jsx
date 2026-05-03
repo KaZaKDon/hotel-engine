@@ -12,6 +12,7 @@ const furnitureClassMap = {
     tv: "furniture-tv",
     mirror: "furniture-mirror",
     bathroom: "furniture-bathroom",
+    tv_stand: "furniture-tv-stand",
 };
 
 export default function RoomPlan({ room, selectedBedId, onSelectBed }) {
