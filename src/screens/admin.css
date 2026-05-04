@@ -1,0 +1,577 @@
+button,
+a {
+    transition: var(--transition-fast);
+}
+
+button:hover,
+a:hover {
+    transform: translateY(-1px);
+}
+
+button:active {
+    transform: scale(0.98);
+}
+
+button:focus-visible,
+a:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+}
+
+.btn-loading {
+    position: relative;
+    pointer-events: none;
+    opacity: 0.8;
+}
+
+.btn-loading::after {
+    content: "";
+    width: 16px;
+    height: 16px;
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    border-top-color: #fff;
+    border-radius: 50%;
+
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+
+    animation: spin 0.6s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: translateY(-50%) rotate(360deg);
+    }
+}
+
+.fade-in {
+    animation: fadeIn 0.25s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(6px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.admin-screen {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    background: var(--color-bg);
+    color: var(--color-text);
+}
+
+.admin-sidebar {
+    padding: 24px;
+    background: var(--color-bg-card);
+    color: var(--color-text);
+    border-right: 1px solid var(--color-border);
+}
+
+.admin-logo {
+    display: grid;
+    gap: 4px;
+    margin-bottom: 32px;
+}
+
+.admin-logo span {
+    color: var(--color-text-muted);
+    opacity: 0.65;
+    font-size: 13px;
+}
+
+.admin-nav {
+    display: grid;
+    gap: 10px;
+}
+
+.admin-nav button {
+    border: 0;
+    border-radius: 14px;
+    padding: 12px 14px;
+    text-align: left;
+    cursor: pointer;
+    background: var(--color-bg-soft);
+    color: var(--color-text);
+}
+
+.admin-nav button.active,
+.admin-nav button:hover {
+    background: var(--color-primary);
+    color: fff;
+}
+
+.admin-content {
+    padding: 32px;
+}
+
+.admin-back {
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: 8px 12px;
+    background: var(--color-bg-soft);
+    cursor: pointer;
+    transition: var(--transition-fast);
+}
+
+.admin-back:hover {
+    background: var(--color-primary);
+    color: #fff;
+}
+
+.admin-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 28px;
+}
+
+.admin-header h1 {
+    margin: 0;
+    font-size: 32px;
+}
+
+.admin-header p {
+    margin: 6px 0 0;
+    opacity: 0.7;
+}
+
+.admin-header-actions {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+}
+
+.admin-badge {
+    padding: 6px 12px;
+    border-radius: var(--radius-md);
+    background: var(--color-accent);
+    color: var(--color-text);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+}
+
+.admin-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+}
+
+.admin-card,
+.admin-panel,
+.admin-room-card {
+    background: var(--color-bg-card);
+    box-shadow: var(--shadow-md);
+    border-radius: var(--radius-lg);
+}
+
+.admin-card {
+    padding: 22px;
+    display: grid;
+    gap: 12px;
+}
+
+.admin-card span {
+    opacity: 0.7;
+}
+
+.admin-card strong {
+    font-size: 34px;
+}
+
+.admin-panel {
+    padding: 24px;
+}
+
+.admin-panel h2 {
+    margin-top: 0;
+}
+
+.admin-table {
+    display: grid;
+    gap: 10px;
+}
+
+.admin-row {
+    display: grid;
+    grid-template-columns: 70px 1.2fr 1.1fr 80px 120px 130px 250px;
+    gap: 10px;
+    align-items: center;
+    padding: 14px;
+    border-radius: 16px;
+    background: var(--color-bg-soft);
+}
+
+.admin-capabilities {
+    margin-top: var(--space-xl);
+    padding: var(--space-lg);
+    border-radius: var(--radius-lg);
+    background: var(--color-bg-soft);
+}
+
+.admin-capabilities h3 {
+    margin-top: 0;
+}
+
+.admin-capabilities ul {
+    margin: 0;
+    padding-left: 20px;
+}
+
+.admin-capabilities li {
+    margin-bottom: 6px;
+}
+
+.status {
+    display: inline-flex;
+    justify-content: center;
+    padding: 6px 10px;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.status-new {
+    background: var(--color-accent-soft);
+}
+
+.status-confirmed,
+.status-booked {
+    background: rgba(56, 189, 248, 0.18);
+}
+
+.status-occupied {
+    background: rgba(34, 197, 94, 0.18);
+}
+
+.status-free {
+    background: var(--color-bg-soft);
+}
+
+.admin-actions {
+    display: flex;
+    gap: 6px;
+}
+
+.admin-actions button,
+.admin-form button,
+.admin-room-card button {
+    border: 0;
+    border-radius: 12px;
+    padding: 9px 12px;
+    cursor: pointer;
+    background: var(--color-primary);
+    color: #fff;
+}
+
+.admin-actions button:hover,
+.admin-form button:hover,
+.admin-room-card button:hover {
+    background: var(--color-primary-hover);
+}
+
+.admin-form {
+    max-width: 620px;
+    display: grid;
+    gap: 12px;
+}
+
+.admin-form input,
+.admin-form select,
+.admin-form textarea {
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid var(--color-border);
+    color: var(--color-text);
+    border-radius: var(--radius-md);
+    padding: 12px 14px;
+    background: var(--color-bg-card);
+    font: inherit;
+}
+
+.admin-room-list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+}
+
+.admin-room-card {
+    padding: 18px;
+    display: grid;
+    gap: 10px;
+}
+
+.admin-room-card h3,
+.admin-room-card p {
+    margin: 0;
+}
+
+.admin-hint {
+    margin-top: 16px;
+    opacity: 0.7;
+}
+
+.booking-calendar {
+    display: grid;
+    grid-template-columns: 90px repeat(5, 1fr);
+    gap: 8px;
+    align-items: stretch;
+}
+
+.booking-calendar strong {
+    padding: 10px;
+}
+
+.calendar-cell {
+    padding: 14px 10px;
+    border-radius: 14px;
+    font-size: 13px;
+    text-align: center;
+}
+
+.calendar-cell.free {
+    background: var(--color-bg-soft);
+}
+
+.calendar-cell.booked {
+    background: rgba(56, 189, 248, 0.18);
+}
+
+.calendar-cell.occupied {
+    background: rgba(34, 197, 94, 0.18);
+}
+
+.report-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-lg);
+}
+
+.report-tabs button,
+.report-form button {
+    border: 0;
+    border-radius: var(--radius-md);
+    padding: 10px 14px;
+    cursor: pointer;
+    background: var(--color-bg-soft);
+    color: var(--color-text);
+    transition: var(--transition-fast);
+}
+
+.report-tabs button.active,
+.report-tabs button:hover,
+.report-form button:hover {
+    background: var(--color-primary);
+    color: #fff;
+}
+
+.report-box {
+    display: grid;
+    gap: var(--space-md);
+}
+
+.report-form {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(140px, 1fr));
+    gap: var(--space-sm);
+}
+
+.report-form input,
+.report-form select {
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: 10px 12px;
+    background: var(--color-bg-card);
+    color: var(--color-text);
+    font: inherit;
+}
+
+.report-result {
+    padding: var(--space-md);
+    border-radius: var(--radius-lg);
+    background: var(--color-bg-soft);
+}
+
+.report-result p {
+    margin: 6px 0;
+}
+
+.report-result ul {
+    margin: 12px 0 0;
+    padding-left: 20px;
+}
+
+.popular-list {
+    display: grid;
+    gap: var(--space-sm);
+}
+
+.popular-list div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--space-md);
+    border-radius: var(--radius-md);
+    background: var(--color-bg-soft);
+}
+
+.admin-offer {
+    margin-top: var(--space-xl);
+    padding: var(--space-lg);
+    border-radius: var(--radius-xl);
+    background: linear-gradient(135deg, var(--color-primary), var(--color-primary-hover));
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    gap: var(--space-lg);
+    align-items: center;
+    box-shadow: var(--shadow-md);
+}
+
+.admin-offer h3 {
+    margin: 8px 0;
+    font-size: 26px;
+}
+
+.admin-offer p {
+    max-width: 720px;
+    margin: 0;
+    opacity: 0.9;
+}
+
+.admin-offer-label {
+    display: inline-flex;
+    padding: 6px 10px;
+    border-radius: var(--radius-md);
+    background: rgba(255, 255, 255, 0.18);
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.admin-offer-actions {
+    display: grid;
+    gap: var(--space-sm);
+    min-width: 220px;
+}
+
+.admin-order-button,
+.admin-portfolio-link {
+    border: 0;
+    border-radius: var(--radius-md);
+    padding: 12px 16px;
+    text-align: center;
+    font-weight: 700;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.admin-order-button {
+    background: var(--color-accent);
+    color: var(--color-text);
+}
+
+.admin-portfolio-link {
+    background: rgba(255, 255, 255, 0.16);
+    color: #fff;
+}
+
+.admin-pricing {
+    margin-top: var(--space-lg);
+    padding: var(--space-lg);
+    border-radius: var(--radius-lg);
+    background: var(--color-bg-card);
+    box-shadow: var(--shadow-sm);
+}
+
+.admin-pricing h3 {
+    margin-top: 0;
+}
+
+.admin-pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-md);
+}
+
+.admin-pricing-grid article {
+    padding: var(--space-md);
+    border-radius: var(--radius-md);
+    background: var(--color-bg-soft);
+}
+
+.admin-pricing-grid strong {
+    display: block;
+    margin-bottom: 8px;
+}
+
+.admin-pricing-grid p {
+    margin: 0;
+    color: var(--color-text-muted);
+}
+
+.admin-email-link {
+    display: block;
+    text-align: center;
+    border-radius: var(--radius-md);
+    padding: 12px 16px;
+    font-weight: 700;
+    text-decoration: none;
+
+    background: rgba(255, 255, 255, 0.18);
+    color: #fff;
+
+    transition: var(--transition-fast);
+}
+
+.admin-email-link:hover {
+    background: rgba(255, 255, 255, 0.28);
+}
+
+@media (max-width: 900px) {
+    .admin-screen {
+        grid-template-columns: 1fr;
+    }
+
+    .admin-sidebar {
+        position: static;
+    }
+
+    .admin-grid,
+    .admin-room-list {
+        grid-template-columns: 1fr;
+    }
+
+    .admin-row {
+        grid-template-columns: 1fr;
+    }
+
+    .booking-calendar {
+        overflow-x: auto;
+        min-width: 700px;
+    }
+
+    .admin-offer {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .admin-pricing-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .report-form {
+        grid-template-columns: 1fr;
+    }
+}

@@ -184,6 +184,14 @@
     background: rgba(168, 85, 247, 0.28);
 }
 
+.floor-item-stairs {
+    cursor: pointer;
+}
+
+.floor-item-stairs:hover {
+    transform: translateY(-2px);
+}
+
 .floor-zone-kitchen {
     background: rgba(239, 68, 68, 0.22);
 }

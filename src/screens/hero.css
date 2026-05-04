@@ -69,3 +69,30 @@
 .hero-button:hover {
     background: var(--color-primary-hover);
 }
+
+.admin-entry {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+
+    border: none;
+    cursor: pointer;
+
+    background: var(--color-primary);
+    color: #fff;
+
+    font-size: 18px;
+
+    box-shadow: var(--shadow-md);
+  transition: var(--transition-normal);
+}
+
+.admin-entry:hover {
+    transform: translateY(-2px) scale(1.05);
+    background: var(--color-primary-hover);
+    color: #2b2118;
+}

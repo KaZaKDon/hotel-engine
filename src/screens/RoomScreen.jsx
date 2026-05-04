@@ -128,7 +128,16 @@ export default function RoomScreen() {
             <div className="room-layout">
                 <section className="room-left">
                     <h1 className="room-title">{room.title}</h1>
+                    <div className="room-meta">
+                        <span>
+                            {room.roomType === "double" && "Двухместный"}
+                            {room.roomType === "twin" && "Раздельные кровати"}
+                            {room.roomType === "family" && "Семейный"}
+                            {room.roomType === "triple" && "Трёхместный"}
+                        </span>
 
+                        <span>• {room.capacity} места</span>
+                    </div>
                     <RoomPlan
                         room={room}
                         selectedBedId={selectedBedId}

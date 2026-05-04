@@ -19,6 +19,13 @@ export default function HotelHeroScreen() {
             style={{ backgroundImage: `url(${hero.backgroundImage})` }}
         >
             <div className="hero-overlay" />
+            <button
+                className="admin-entry"
+                onClick={() => navigate("/admin")}
+                title="Админ панель (демо)"
+            >
+                <span>⚙</span>
+            </button>
 
             <div className="hero-content">
                 <h1>{hero.title}</h1>

@@ -25,14 +25,27 @@ export default function FloorPlanScreen() {
     const layoutZones = floor.layout?.zones || [];
     const layoutFurniture = floor.layout?.furniture || [];
 
-    const handleRoomClick = (item) => {
-        if (item.type !== "room") return;
+    const handleItemClick = (item) => {
+        if (item.type === "room") {
+            const room = rooms.find((roomItem) => roomItem.number === item.number);
+            if (!room) return;
 
-        const room = rooms.find((roomItem) => roomItem.number === item.number);
+            navigate(`/hotels/${hotelSlug}/rooms/${room.number}`);
+            return;
+        }
 
-        if (!room) return;
+        if (item.type === "stairs") {
+            const currentFloor = Number(floorNumber);
 
-        navigate(`/hotels/${hotelSlug}/rooms/${room.number}`);
+            if (item.direction === "up") {
+                navigate(`/hotels/${hotelSlug}/floors/${currentFloor + 1}`);
+                return;
+            }
+
+            if (item.direction === "down") {
+                navigate(`/hotels/${hotelSlug}/floors/${currentFloor - 1}`);
+            }
+        }
     };
 
     const renderItemLabel = (item) => {
@@ -78,8 +91,8 @@ export default function FloorPlanScreen() {
                             width: `${item.w}%`,
                             height: `${item.h}%`,
                         }}
-                        onClick={() => handleRoomClick(item)}
-                        disabled={item.type !== "room"}
+                        onClick={() => handleItemClick(item)}
+                        disabled={item.type !== "room" && item.type !== "stairs"}
                     >
                         {renderItemLabel(item)}
                     </button>

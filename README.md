@@ -1,16 +1,83 @@
-# React + Vite
+# Hotel Engine
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Интерактивная система бронирования гостиницы с визуальным выбором номера.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 🚀 Возможности
 
-## React Compiler
+- выбор этажа
+- план здания
+- интерактивный план комнаты
+- выбор кровати (визуально)
+- фото и видео номеров
+- заявка на бронирование
+- отправка в Telegram / email
+- демо-админка
+- отчёты (демо)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## 🧱 Стек
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- React + Vite
+- PHP (API)
+- PHPMailer
+- CSS Variables
+
+---
+
+## 📁 Структура
+
+txt
+src/
+  data/
+  screens/
+  components/
+  styles/
+
+  Основные экраны
+/                — главный экран
+/floors          — этажи
+/floor/:id       — план этажа
+/room/:id        — комната
+/admin           — демо-админка
+
+Админка (демо)
+/admin
+
+Показывает:
+
+заявки
+заселение
+номера
+медиа
+календарь
+отчёты
+
+📌 Данные моковые
+
+📡 API
+POST /api/booking/index.php
+
+⚙️ Запуск
+npm install
+npm run dev
+📦 Сборка
+npm run build
+🎯 Назначение
+
+Проект используется как:
+
+- демонстрация клиенту
+- основа для кастомной разработки
+🔮 Полная версия включает
+БД
+занятость
+админку с доступами
+онлайн оплату
+масштабирование
+👨‍💻 Автор
+
+Дмитрий Внуков
+Fullstack JavaScript разработчик

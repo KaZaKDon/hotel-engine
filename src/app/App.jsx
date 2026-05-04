@@ -4,6 +4,7 @@ import HotelHeroScreen from "../screens/HotelHeroScreen";
 import FloorSelectScreen from "../screens/FloorSelectScreen";
 import FloorPlanScreen from "../screens/FloorPlanScreen";
 import RoomScreen from "../screens/RoomScreen";
+import AdminScreen from "../screens/AdminScreen";
 
 export default function App() {
     const defaultHotel = db.hotels[0];
@@ -29,6 +30,7 @@ export default function App() {
                 path="/hotels/:hotelSlug/floors/:floorNumber"
                 element={<FloorPlanScreen />}
             />
+            <Route path="/admin" element={<AdminScreen />} />
         </Routes>
     );
 }

@@ -308,6 +308,14 @@
     cursor: pointer;
 }
 
+.room-meta {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    opacity: 0.8;
+}
+
 @media (max-width: 720px) {
     .booking-grid {
         grid-template-columns: 1fr;
