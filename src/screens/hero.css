@@ -88,11 +88,71 @@
     font-size: 18px;
 
     box-shadow: var(--shadow-md);
-  transition: var(--transition-normal);
+    transition: var(--transition-normal);
 }
 
 .admin-entry:hover {
     transform: translateY(-2px) scale(1.05);
     background: var(--color-primary-hover);
     color: #2b2118;
+}
+
+.hero-attractions {
+    width: min(620px, calc(100vw - 32px));
+    margin: 200px auto 0;
+    padding: 16px 18px;
+
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 14px;
+    align-items: center;
+
+    border-radius: var(--radius-xl);
+    background: rgba(255, 255, 255, 0.9);
+    color: var(--color-text);
+    text-decoration: none;
+    box-shadow: var(--shadow-md);
+}
+
+.hero-attractions-icon {
+    width: 46px;
+    height: 46px;
+    display: grid;
+    place-items: center;
+    border-radius: var(--radius-md);
+    background: var(--gradient-water);
+    font-size: 24px;
+}
+
+.hero-attractions-text {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    text-align: left;
+}
+
+.hero-attractions-text strong {
+    font-size: 17px;
+}
+
+.hero-attractions-text small {
+    color: var(--color-text-muted);
+    font-size: 13px;
+}
+
+.hero-attractions-link {
+    color: var(--color-primary-hover);
+    font-weight: 800;
+    white-space: nowrap;
+}
+
+@media (max-width: 680px) {
+    .hero-attractions {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .hero-attractions-text {
+        text-align: center;
+    }
 }

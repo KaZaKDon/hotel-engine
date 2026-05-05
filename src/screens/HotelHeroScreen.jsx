@@ -45,6 +45,22 @@ export default function HotelHeroScreen() {
                 >
                     {hero.actionText}
                 </button>
+
+                <a
+                    className="hero-attractions"
+                    href="https://krai.vkazakdon.ru"
+                    target="_blank"
+                    rel="noreferrer"
+                >
+                    <span className="hero-attractions-icon">🧭</span>
+
+                    <span className="hero-attractions-text">
+                        <strong>Достопримечательности района</strong>
+                        <small>Карта музеев, природы и памятных мест рядом</small>
+                    </span>
+
+                    <span className="hero-attractions-link">Открыть →</span>
+                </a>
             </div>
         </section>
     );

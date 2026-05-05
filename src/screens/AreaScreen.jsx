@@ -52,25 +52,51 @@ export default function AreaScreen() {
                 <div className="area-plan">
                     <h2>План зала</h2>
 
-                    <div
-                        className="area-plan-box"
-                        style={{
-                            aspectRatio: `${area.plan.width} / ${area.plan.height}`,
-                        }}
-                    >
-                        {area.plan.furniture.map((item) => (
-                            <div
-                                key={item.id}
-                                className={`area-furniture area-furniture-${item.type}`}
-                                style={{
-                                    left: `${(item.x / area.plan.width) * 100}%`,
-                                    top: `${(item.y / area.plan.height) * 100}%`,
-                                }}
-                                title={item.title}
+                    <div className="area-plan-box">
+                        <svg
+                            className="area-plan-svg"
+                            viewBox="0 0 600 420"
+                            role="img"
+                            aria-label="План зала со столами"
+                        >
+                            <rect className="area-room-fill" x="20" y="20" width="560" height="380" rx="18" />
+                            <rect className="area-room-border" x="20" y="20" width="560" height="380" rx="18" />
+
+                            {/* окна по нижней стене */}
+                            <rect className="area-window" x="90" y="390" width="90" height="20" rx="4" />
+                            <rect className="area-window" x="255" y="390" width="90" height="20" rx="4" />
+                            <rect className="area-window" x="420" y="390" width="90" height="20" rx="4" />
+
+                            {/* вход справа */}
+                            <path className="area-door-arc" d="M570 200 A70 70 1 0 0 500 270" />
+
+                            <rect
+                                className="area-door-gap"
+                                x="570"
+                                y="100"
+                                width="16"
+                                height="90"
+                                rx="8"
+                            />
+
+                            <text
+                                className="area-door-label"
+                                x="550"
+                                y="150"
+                                textAnchor="end"
                             >
-                                {item.type !== "window" && item.title}
-                            </div>
-                        ))}
+                                Вход
+                            </text>
+
+                            {/* столы */}
+                            <rect className="area-table" x="90" y="85" width="100" height="58" rx="16" />
+                            <rect className="area-table" x="90" y="180" width="100" height="58" rx="16" />
+                            <rect className="area-table" x="90" y="275" width="100" height="58" rx="16" />
+
+                            <rect className="area-table" x="370" y="85" width="100" height="58" rx="16" />
+                            <rect className="area-table" x="370" y="180" width="100" height="58" rx="16" />
+                            <rect className="area-table" x="370" y="275" width="100" height="58" rx="16" />
+                        </svg>
                     </div>
                 </div>
 
