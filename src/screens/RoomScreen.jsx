@@ -84,7 +84,7 @@ export default function RoomScreen() {
         let apiSuccess = false;
 
         try {
-            const res = await fetch("http://127.0.0.1:8000/api/booking/index.php", {
+            const res = await fetch("/api/booking/index.php", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
