@@ -214,6 +214,19 @@
     font-size: 13px;
 }
 
+.floor-zone {
+    border: 0;
+}
+
+.floor-zone-clickable {
+    cursor: pointer;
+}
+
+.floor-zone-clickable:hover {
+    outline: 3px solid rgba(59, 130, 246, 0.55);
+    filter: brightness(1.08);
+}
+
 @media (max-width: 760px) {
     .floor-layout {
         grid-template-columns: 1fr;

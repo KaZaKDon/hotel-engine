@@ -34,6 +34,11 @@ export default function FloorPlanScreen() {
             return;
         }
 
+        if (item.areaSlug) {
+                navigate(`/hotels/${hotelSlug}/areas/${item.areaSlug}`);
+                return;
+            }
+
         if (item.type === "stairs") {
             const currentFloor = Number(floorNumber);
 
@@ -66,18 +71,21 @@ export default function FloorPlanScreen() {
 
             <section className={`floor-layout floor-layout-${floor.number}`}>
                 {layoutZones.map((zone) => (
-                    <div
+                    <button
                         key={zone.id}
-                        className={`floor-zone floor-zone-${zone.type}`}
+                        type="button"
+                        className={`floor-zone floor-zone-${zone.type} ${zone.areaSlug ? "floor-zone-clickable" : ""}`}
                         style={{
                             left: `${zone.x}%`,
                             top: `${zone.y}%`,
                             width: `${zone.w}%`,
                             height: `${zone.h}%`,
                         }}
+                        onClick={() => handleItemClick(zone)}
+                        disabled={!zone.areaSlug}
                     >
                         <span>{zone.title}</span>
-                    </div>
+                    </button>
                 ))}
 
                 {layoutItems.map((item) => (

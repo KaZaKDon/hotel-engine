@@ -25,3 +25,9 @@ export function getFloorByNumber(hotelId, number) {
 export function getRoomsByFloor(floorId) {
     return getRoomsByFloorId(floorId);
 }
+
+export function getAreaBySlug(hotelId, areaSlug) {
+    return db.areas.find(
+        (area) => area.hotelId === hotelId && area.slug === areaSlug
+    );
+}

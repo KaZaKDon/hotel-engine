@@ -2,6 +2,7 @@ import { floors } from "./floors";
 import { rooms } from "./rooms";
 import { beds } from "./beds";
 import { foodTariffs } from "./foodTariffs";
+import { areas } from "./areas";
 
 export const db = {
     hotels: [
@@ -16,7 +17,7 @@ export const db = {
                 title: "Гостиница ДОН",
                 subtitle: "Уютное размещение у Дона, набережной и центра Вёшенской",
                 backgroundImage: "/images/hotels/hero.webp",
-                badges: ["от 1200 ₽", "питание", "парковка", "у Дона"],
+                badges: ["от 2000 ₽", "питание", "парковка", "у Дона"],
                 actionText: "Войти",
             },
 
@@ -32,4 +33,5 @@ export const db = {
     rooms,
     beds,
     foodTariffs,
+    areas,
 };

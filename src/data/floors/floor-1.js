@@ -35,6 +35,7 @@ export const floor1 = {
                 id: "dining-hall-1",
                 type: "dining_hall",
                 title: "Зал со столами",
+                areaSlug: "dining-hall",
                 x: 37,
                 y: 0,
                 w: 63,
