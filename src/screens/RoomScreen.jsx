@@ -21,6 +21,7 @@ export default function RoomScreen() {
     const [guestPhone, setGuestPhone] = useState("");
     const [guestComment, setGuestComment] = useState("");
     const [successMessage, setSuccessMessage] = useState("");
+    const [galleryOpen, setGalleryOpen] = useState(false);
 
     const hotel = getHotelBySlug(hotelSlug);
     if (!hotel) return <div>Гостиница не найдена</div>;
@@ -31,6 +32,8 @@ export default function RoomScreen() {
     if (!room) return <div>Номер не найден</div>;
 
     const images = room.media?.images || [];
+    const currentImage = images[imageIndex] || images[0];
+    const hasVideo = Boolean(room.media?.video);
     const foodTariffs = db.foodTariffs || [];
     const selectedFood = foodTariffs.find((item) => item.id === foodTariffId);
 
@@ -119,6 +122,11 @@ export default function RoomScreen() {
         console.log("Новая заявка:", booking);
     };
 
+    const openGallery = (index) => {
+        setImageIndex(index);
+        setGalleryOpen(true);
+    };
+
     return (
         <main className="room-screen">
             <button className="back-button" onClick={() => navigate(-1)}>
@@ -151,32 +159,72 @@ export default function RoomScreen() {
                         </div>
                     )}
 
-                    <div className="carousel">
-                        <button type="button" onClick={showPrevImage}>
-                            ‹
-                        </button>
-
-                        <div className="carousel-image">
-                            {images.length ? (
-                                <img src={images[imageIndex]} alt={`${room.title} фото`} />
-                            ) : (
-                                <span>Нет фото</span>
-                            )}
-                        </div>
-
-                        <button type="button" onClick={showNextImage}>
-                            ›
-                        </button>
+                    <div className="room-gallery">
+                        {currentImage ? (
+                            <button
+                                type="button"
+                                className="room-gallery-main"
+                                onClick={() => openGallery(imageIndex)}
+                            >
+                                <img src={currentImage} alt={`${room.title} фото`} />
+                                {images.length > 1 && (
+                                    <span className="room-gallery-badge">
+                                        Фото {imageIndex + 1} / {images.length}
+                                    </span>
+                                )}
+                            </button>
+                        ) : (
+                            <div className="room-gallery-empty">Нет фото</div>
+                        )}
                     </div>
 
-                    <button
-                        type="button"
-                        className="video-button"
-                        onClick={() => setVideoOpen(true)}
-                        disabled={!room.media?.video}
-                    >
-                        Смотреть видео
-                    </button>
+                    {galleryOpen && images.length > 0 && (
+                        <div className="modal" onClick={() => setGalleryOpen(false)}>
+                            <div className="gallery-modal" onClick={(e) => e.stopPropagation()}>
+                                <button
+                                    type="button"
+                                    className="modal-close"
+                                    onClick={() => setGalleryOpen(false)}
+                                >
+                                    ×
+                                </button>
+
+                                <button
+                                    type="button"
+                                    className="gallery-arrow gallery-arrow-left"
+                                    onClick={showPrevImage}
+                                    disabled={images.length < 2}
+                                >
+                                    ‹
+                                </button>
+
+                                <img
+                                    className="gallery-modal-image"
+                                    src={images[imageIndex]}
+                                    alt={`${room.title} фото ${imageIndex + 1}`}
+                                />
+
+                                <button
+                                    type="button"
+                                    className="gallery-arrow gallery-arrow-right"
+                                    onClick={showNextImage}
+                                    disabled={images.length < 2}
+                                >
+                                    ›
+                                </button>
+                            </div>
+                        </div>
+                    )}
+
+                    {hasVideo && (
+                        <button
+                            type="button"
+                            className="video-button"
+                            onClick={() => setVideoOpen(true)}
+                        >
+                            Смотреть видео
+                        </button>
+                    )}
                 </section>
 
                 <aside className="room-right">
@@ -257,9 +305,9 @@ export default function RoomScreen() {
                 </aside>
             </div>
 
-            {videoOpen && (
+            {videoOpen && hasVideo && (
                 <div className="modal" onClick={() => setVideoOpen(false)}>
-                    <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+                    <div className="modal-content video-modal-content" onClick={(e) => e.stopPropagation()}>
                         <button
                             type="button"
                             className="modal-close"
@@ -268,78 +316,87 @@ export default function RoomScreen() {
                             ×
                         </button>
 
-                        <video controls autoPlay src={room.media?.video} />
+                        <video
+                            className="room-video"
+                            controls
+                            autoPlay
+                            playsInline
+                            src={room.media?.video}
+                        />
                     </div>
                 </div>
-            )}
+            )
+            }
 
-            {bookingModalOpen && (
-                <div className="modal" onClick={() => setBookingModalOpen(false)}>
-                    <form
-                        className="booking-modal"
-                        onSubmit={handleBookingSubmit}
-                        onClick={(e) => e.stopPropagation()}
-                    >
-                        <button
-                            type="button"
-                            className="modal-close"
-                            onClick={() => setBookingModalOpen(false)}
+            {
+                bookingModalOpen && (
+                    <div className="modal" onClick={() => setBookingModalOpen(false)}>
+                        <form
+                            className="booking-modal"
+                            onSubmit={handleBookingSubmit}
+                            onClick={(e) => e.stopPropagation()}
                         >
-                            ×
-                        </button>
+                            <button
+                                type="button"
+                                className="modal-close"
+                                onClick={() => setBookingModalOpen(false)}
+                            >
+                                ×
+                            </button>
 
-                        <h2>Заявка на бронирование</h2>
+                            <h2>Заявка на бронирование</h2>
 
-                        <div className="booking-modal-summary">
-                            <p>
-                                <strong>Номер:</strong> {room.title}
-                            </p>
-                            <p>
-                                <strong>Даты:</strong> {dateFrom} — {dateTo}
-                            </p>
-                            <p>
-                                <strong>Питание:</strong> {selectedFood?.title || "Без питания"}
-                            </p>
-                        </div>
+                            <div className="booking-modal-summary">
+                                <p>
+                                    <strong>Номер:</strong> {room.title}
+                                </p>
+                                <p>
+                                    <strong>Даты:</strong> {dateFrom} — {dateTo}
+                                </p>
+                                <p>
+                                    <strong>Питание:</strong> {selectedFood?.title || "Без питания"}
+                                </p>
+                            </div>
 
-                        <label>
-                            Ваше имя
-                            <input
-                                type="text"
-                                value={guestName}
-                                onChange={(e) => setGuestName(e.target.value)}
-                                placeholder="Иван"
-                                required
-                            />
-                        </label>
+                            <label>
+                                Ваше имя
+                                <input
+                                    type="text"
+                                    value={guestName}
+                                    onChange={(e) => setGuestName(e.target.value)}
+                                    placeholder="Иван"
+                                    required
+                                />
+                            </label>
 
-                        <label>
-                            Телефон
-                            <input
-                                type="tel"
-                                value={guestPhone}
-                                onChange={(e) => setGuestPhone(e.target.value)}
-                                placeholder="+7..."
-                                required
-                            />
-                        </label>
+                            <label>
+                                Телефон
+                                <input
+                                    type="tel"
+                                    value={guestPhone}
+                                    onChange={(e) => setGuestPhone(e.target.value)}
+                                    placeholder="+7..."
+                                    required
+                                />
+                            </label>
 
-                        <label>
-                            Комментарий
-                            <textarea
-                                value={guestComment}
-                                onChange={(e) => setGuestComment(e.target.value)}
-                                placeholder="Например: заезд вечером"
-                                rows="4"
-                            />
-                        </label>
+                            <label>
+                                Комментарий
+                                <textarea
+                                    value={guestComment}
+                                    onChange={(e) => setGuestComment(e.target.value)}
+                                    placeholder="Например: заезд вечером"
+                                    rows="4"
+                                />
+                            </label>
 
-                        <button type="submit" className="booking-button">
-                            Отправить заявку
-                        </button>
-                    </form>
-                </div>
-            )}
-        </main>
+                            <button type="submit" className="booking-button">
+                                Отправить заявку
+                            </button>
+                        </form>
+                    </div>
+                )
+            }
+        </main >
     );
 }

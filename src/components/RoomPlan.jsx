@@ -107,6 +107,7 @@ export default function RoomPlan({ room, selectedBedId, onSelectBed }) {
                                         : "furniture-label"
                                 }
                             >
+                                {catalogItem.title}
                             </text>
                         </g>
                     );

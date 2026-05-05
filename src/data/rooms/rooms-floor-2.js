@@ -10,8 +10,8 @@ const baseRoom = {
         height: 450,
     },
     media: {
-        images: ["/images/rooms/201-1.webp", "/images/rooms/201-2.webp"],
-        video: "/videos/rooms/201.mp4",
+        images: ["/images/rooms/1.webp", "/images/rooms/2.webp", "/images/rooms/3.webp", "/images/rooms/4.webp","/images/rooms/5.webp",],
+        video: "/images/rooms/2.mp4",
     },
 };
 
@@ -20,22 +20,22 @@ const tripleRoomFurniture = [
     {
         id: "bed-1",
         type: "bed_single",
-        x: 80,
-        y: 30,
+        x: 70,
+        y: 0,
         rotation: 270,
     },
     {
         id: "bed-2",
         type: "bed_single",
-        x: 80,
-        y: 150,
+        x: 70,
+        y: 140,
         rotation: 270,
     },
     {
         id: "bed-3",
         type: "bed_single",
-        x: 80,
-        y: 270,
+        x: 70,
+        y: 290,
         rotation: 270,
     },
 
@@ -43,28 +43,28 @@ const tripleRoomFurniture = [
     {
         id: "table-1",
         type: "table",
-        x: 220,
-        y: 320,
+        x: 280,
+        y: 200,
     },
 
     // 3 стула
     {
         id: "chair-1",
         type: "chair",
-        x: 200,
-        y: 380,
+        x: 230,
+        y: 210,
     },
     {
         id: "chair-2",
         type: "chair",
-        x: 260,
-        y: 380,
+        x: 320,
+        y: 150,
     },
     {
         id: "chair-3",
         type: "chair",
         x: 320,
-        y: 380,
+        y: 270,
     },
 
     // ТВ
@@ -72,7 +72,7 @@ const tripleRoomFurniture = [
         id: "tv-1",
         type: "tv",
         x: 530,
-        y: 150,
+        y: 210,
         rotation: 270,
     },
 
@@ -81,7 +81,7 @@ const tripleRoomFurniture = [
         id: "tv-stand",
         type: "tv_stand",
         x: 490,
-        y: 145,
+        y: 203,
         rotation: 270,
     },
 
@@ -89,8 +89,8 @@ const tripleRoomFurniture = [
     {
         id: "wardrobe-1",
         type: "wardrobe",
-        x: 460,
-        y: 360,
+        x: 465,
+        y: 375,
     },
 
     // холодильник
@@ -98,7 +98,7 @@ const tripleRoomFurniture = [
         id: "fridge-1",
         type: "fridge",
         x: 380,
-        y: 360,
+        y: 375,
     },
 ];
 
@@ -106,34 +106,35 @@ const doubleRoomFurniture = [
     {
         id: "bed-main",
         type: "bed_double",
-        x: 200,
+        x: 40,
         y: 60,
+        rotation: 270,
     },
 
     {
         id: "nightstand-left",
         type: "nightstand",
-        x: 160,
-        y: 80,
+        x: 25,
+        y: 40,
     },
     {
         id: "nightstand-right",
         type: "nightstand",
-        x: 360,
-        y: 80,
+        x: 25,
+        y: 240,
     },
 
     {
         id: "tv-1",
         type: "tv",
-        x: 520,
+        x: 530,
         y: 140,
         rotation: 270,
     },
     {
         id: "tv-stand",
         type: "tv_stand",
-        x: 480,
+        x: 490,
         y: 135,
         rotation: 270,
     },
@@ -141,33 +142,33 @@ const doubleRoomFurniture = [
     {
         id: "wardrobe-1",
         type: "wardrobe",
-        x: 460,
-        y: 360,
+        x: 465,
+        y: 375,
     },
     {
         id: "fridge-1",
         type: "fridge",
         x: 380,
-        y: 360,
+        y: 375,
     },
 
     {
         id: "table-1",
         type: "table",
-        x: 180,
-        y: 340,
+        x: 20,
+        y: 370,
     },
 
     {
         id: "chair-1",
         type: "chair",
-        x: 160,
-        y: 390,
+        x: 20,
+        y: 320,
     },
     {
         id: "chair-2",
         type: "chair",
-        x: 240,
+        x: 130,
         y: 390,
     },
 ];

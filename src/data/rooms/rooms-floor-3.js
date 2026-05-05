@@ -11,8 +11,8 @@ const baseRoom = {
         height: 450,
     },
     media: {
-        images: ["/images/rooms/201-1.webp", "/images/rooms/201-2.webp"],
-        video: "/videos/rooms/201.mp4",
+        images: ["/images/rooms/1.webp", "/images/rooms/2.webp", "/images/rooms/3.webp", "/images/rooms/4.webp","/images/rooms/5.webp",],
+        video: "/images/rooms/3.mp4",
     },
 };
 
@@ -21,58 +21,59 @@ const doubleRoomFurniture = [
     {
         id: "bed-main",
         type: "bed_double",
-        x: 200,
-        y: 60,
+        x: 40,
+        y: 80,
+        rotation: 270,
     },
     {
         id: "nightstand-left",
         type: "nightstand",
-        x: 160,
-        y: 80,
+        x: 20,
+        y: 55,
     },
     {
         id: "nightstand-right",
         type: "nightstand",
-        x: 360,
-        y: 80,
+        x: 20,
+        y: 265,
     },
     {
         id: "tv-1",
         type: "tv",
-        x: 520,
-        y: 120,
+        x: 530,
+        y: 160,
         rotation: 270,
     },
     {
         id: "tv-stand",
         type: "tv_stand",
-        x: 480,
-        y: 115,
+        x: 490,
+        y: 150,
         rotation: 270,
     },
     {
         id: "wardrobe-1",
         type: "wardrobe",
-        x: 450,
-        y: 340,
+        x: 460,
+        y: 370,
     },
     {
         id: "table-1",
         type: "table",
-        x: 150,
-        y: 340,
+        x: 20,
+        y: 370,
     },
     {
         id: "chair-1",
         type: "chair",
-        x: 140,
+        x: 130,
         y: 390,
     },
     {
         id: "chair-2",
         type: "chair",
-        x: 220,
-        y: 390,
+        x: 40,
+        y: 325,
     },
 ];
 
@@ -80,29 +81,29 @@ const twinRoomFurniture = [
     {
         id: "bed-1",
         type: "bed_single",
-        x: 80,
-        y: 40,
+        x: 75,
+        y: 20,
         rotation: 270,
     },
     {
         id: "bed-2",
         type: "bed_single",
-        x: 80,
-        y: 190,
+        x: 75,
+        y: 170,
         rotation: 270,
     },
 
     {
         id: "nightstand-1",
         type: "nightstand",
-        x: 30,
-        y: 95,
+        x: 20,
+        y: 30,
     },
     {
         id: "nightstand-2",
         type: "nightstand",
-        x: 30,
-        y: 245,
+        x: 20,
+        y: 320,
     },
 
     {
@@ -136,20 +137,21 @@ const twinRoomFurniture = [
     {
         id: "table-1",
         type: "table",
-        x: 120,
-        y: 370,
+        x: 300,
+        y: 160,
+        rotation: 270,
     },
     {
         id: "chair-1",
         type: "chair",
-        x: 95,
-        y: 325,
+        x: 270,
+        y: 170,
     },
     {
         id: "chair-2",
         type: "chair",
-        x: 190,
-        y: 325,
+        x: 390,
+        y: 170,
     },
 ];
 
@@ -158,30 +160,31 @@ const familyRoomFurniture = [
     {
         id: "bed-main",
         type: "bed_double",
-        x: 200,
-        y: 40,
+        x: 35,
+        y: 60,
+        rotation: 270,
     },
 
     // тумбочки
     {
         id: "nightstand-left",
         type: "nightstand",
-        x: 160,
-        y: 60,
+        x: 15,
+        y: 40,
     },
     {
         id: "nightstand-right",
         type: "nightstand",
-        x: 360,
-        y: 60,
+        x: 15,
+        y: 240,
     },
 
     // односпальная (для ребёнка)
     {
         id: "bed-child",
         type: "bed_single",
-        x: 80,
-        y: 180,
+        x: 70,
+        y: 290,
         rotation: 270,
     },
 
@@ -189,28 +192,29 @@ const familyRoomFurniture = [
     {
         id: "table-1",
         type: "table",
-        x: 220,
-        y: 300,
+        x: 300,
+        y: 130,
+        rotation: 270,
     },
 
     // 3 стула
     {
         id: "chair-1",
         type: "chair",
-        x: 200,
-        y: 360,
+        x: 330,
+        y: 60,
     },
     {
         id: "chair-2",
         type: "chair",
-        x: 260,
-        y: 360,
+        x: 270,
+        y: 140,
     },
     {
         id: "chair-3",
         type: "chair",
-        x: 320,
-        y: 360,
+        x: 330,
+        y: 220,
     },
 
     // ТВ
@@ -236,7 +240,7 @@ const familyRoomFurniture = [
         id: "wardrobe-1",
         type: "wardrobe",
         x: 460,
-        y: 360,
+        y: 370,
     },
 
     // холодильник
@@ -244,7 +248,7 @@ const familyRoomFurniture = [
         id: "fridge-1",
         type: "fridge",
         x: 380,
-        y: 360,
+        y: 370,
     },
 ];
 

@@ -88,14 +88,21 @@
     font-size: 12px;
     font-weight: 800;
     pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.15s ease;
 }
 
-.furniture-tv+.furniture-label,
-.furniture-tv~.furniture-label {
+.furniture-tv + .furniture-label,
+.furniture-tv ~ .furniture-label,
+.furniture-label-light {
     fill: #ffffff;
 }
 
-.furniture-tv_stand {
+.room-plan-box g:hover .furniture-label {
+    opacity: 1;
+}
+
+.furniture-tv-stand {
     fill: #e9d5ff;
 }
 
